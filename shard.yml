@@ -1,0 +1,28 @@
+name: lucky_bug_honeypot
+version: 0.1.0
+
+authors:
+  - your-name-here <your-email-here>
+
+targets:
+  lucky_bug_honeypot:
+    main: src/lucky_bug_honeypot.cr
+
+crystal: 0.35.1
+
+dependencies:
+  lucky:
+    github: luckyframework/lucky
+    version: ~> 0.24.0
+  authentic:
+    github: luckyframework/authentic
+    version: ~> 0.7.0
+  carbon:
+    github: luckyframework/carbon
+    version: ~> 0.1.2
+  dotenv:
+    github: gdotdesign/cr-dotenv
+    version: ~> 0.7.0
+  lucky_flow:
+    github: luckyframework/lucky_flow
+    version: ~> 0.7.0
