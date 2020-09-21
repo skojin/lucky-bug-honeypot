@@ -74,10 +74,25 @@ jobs:
           ${{ runner.os }}-crystal-
 
     - name: Install shards
-      run: shards install
+      run: shards check || shards install
 
     - name: Install yarn packages
       run: yarn install --frozen-lockfile --no-progress
+
+    - name: Running System Check
+      run: ./script/system_check
+
+    - name: Compiling assets
+      run: yarn dev
+
+    - name: Build lucky_tasks
+      run: crystal build tasks.cr -o ./lucky_tasks
+
+    - name: Prepare database
+      run: |
+        ./lucky_tasks db.create
+        ./lucky_tasks db.migrate
+        ./lucky_tasks db.create_required_seeds
 
     - name: Run tests
       run: crystal spec

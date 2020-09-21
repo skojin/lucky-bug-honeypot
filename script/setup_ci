@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+
+# Exit if any subcommand fails
+set -e
+set -o pipefail
+
+source script/helpers/text_helpers
+
+
+notice "Running System Check"
+./script/system_check
+print_done
+
+notice "Compiling assets"
+yarn dev | indent
+
+notice "Build lucky_tasks"
+crystal build tasks.cr -o ./lucky_tasks
+
+notice "Creating the database"
+./lucky_tasks db.create | indent
+
+notice "Migrating the database"
+./lucky_tasks db.migrate | indent
+
+notice "Seeding the database with required records"
+./lucky_tasks db.create_required_seeds | indent
