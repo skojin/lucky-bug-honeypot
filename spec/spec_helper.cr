@@ -20,3 +20,10 @@ include LuckyFlow::Expectations
 Avram::Migrator::Runner.new.ensure_migrated!
 Avram::SchemaEnforcer.ensure_correct_column_mappings!
 Habitat.raise_if_missing_settings!
+
+# workaround https://github.com/luckyframework/lucky_flow/issues/65
+class User
+  def id
+    0
+  end
+end
