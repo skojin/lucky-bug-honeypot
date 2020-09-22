@@ -99,7 +99,7 @@ jobs:
       run: ./script/system_check
 
     - name: Compiling assets
-      run: yarn dev
+      run: yarn prod
 
     - name: Build lucky_tasks
       if: steps.crystal-cache.outputs.cache-hit != 'true'
