@@ -1,4 +1,4 @@
-name: Lucky Bug Honeypot CI
+name: test_project_web CI
 
 on:
   push:
@@ -12,7 +12,7 @@ jobs:
     container:
       image: crystallang/crystal:0.35.1
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
       - name: Format
         run: crystal tool format --check
   specs:
@@ -44,7 +44,6 @@ jobs:
       run: |
         apt-get update
         apt-get -yqq install libpq-dev postgresql-client
-
     - name: Install Chromedriver
       run: apt-get -yqq install chromium-chromedriver
 
@@ -74,7 +73,6 @@ jobs:
         key: ${{ runner.os }}-node-${{ hashFiles('**/yarn.lock') }}
         restore-keys: |
           ${{ runner.os }}-node-
-
     - name: Set up Crystal cache
       uses: actions/cache@v2
       id: crystal-cache
@@ -94,7 +92,6 @@ jobs:
     - name: Install yarn packages
       if: steps.node-cache.outputs.cache-hit != 'true'
       run: yarn install --frozen-lockfile --no-progress
-
     - name: Compiling assets
       run: yarn prod
 
