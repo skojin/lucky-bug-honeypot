@@ -12,3 +12,4 @@ This is a project written using [Lucky](https://luckyframework.org). Enjoy!
 ### Learning Lucky
 
 Lucky uses the [Crystal](https://crystal-lang.org) programming language. You can learn about Lucky from the [Lucky Guides](https://luckyframework.org/guides/getting-started/why-lucky).
+Thu Oct  8 11:36:33 MSK 2020
